@@ -1,10 +1,12 @@
 {
   "name": "anubis-commercial-db",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "migrate": "npx umzug up"
+    "migrate:up": "node src/up.js",
+    "migrate:down": "node src/down.js"
   },
   "keywords": [],
   "author": "",
