@@ -2,6 +2,8 @@ import {Sequelize} from 'sequelize';
 import {SequelizeStorage, Umzug} from 'umzug';
 import fs from 'fs/promises';
 
+let migrationsPath = process.env.MIGRATIONS_PATH;
+
 const sequelize = new Sequelize({
     dialect: 'postgres',
     host: process.env.DB_HOST,
@@ -37,7 +39,7 @@ const executeQuery = async (query, name) => {
 
 export const umzug = new Umzug({
     migrations: {
-        glob: `migrations/*${MIGRATION_EXTENSIONS.UP}`,
+        glob: `${migrationsPath}/*${MIGRATION_EXTENSIONS.UP}`,
         resolve: ({name, path: upPath}) => {
             const downPath = upPath.replace(MIGRATION_EXTENSIONS.UP, MIGRATION_EXTENSIONS.DOWN);
 

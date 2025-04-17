@@ -1,4 +1,4 @@
-import {umzug} from "./migration-manager.js";
+import {umzug} from "./migration-manager.mjs";
 
 try {
     await umzug.up()
